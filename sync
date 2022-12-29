@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [[ -z $1 ]]; then
+	echo "missing site name"
+	exit 1
+fi
+
+SITE=${1%%/}
+echo syncing $SITE...
+aws s3 sync --delete $SITE s3://$SITE.schrock.io
